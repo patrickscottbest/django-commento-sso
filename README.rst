@@ -1,8 +1,8 @@
-=====
+===============================
 django-commento-sso
-=====
+===============================
 
-django-commento-sso is a Django app to interact with commento.io sso.
+django-commento-sso is a Django app to interact with commento.io single sign on.
 It receives commento's redirect, verifies, and sends the user back to commento.
 
 Detailed documentation is in the "docs" directory.
@@ -17,8 +17,8 @@ Quick start
         'django-commento-sso',
     ]
 
-2. Include the polls URLconf in your project urls.py like this::
+2. Add COMMENTO_SECRET_KEY in 64-character text to your settings.py 
 
-    path('commento/', include('django_commento_sso.urls')),
+3. Include the URLconf in your project urls.py like this::
 
-
+    path("sso/", include('django_commento_sso.urls')),

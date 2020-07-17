@@ -1,0 +1,15 @@
+LICENSE
+MANIFEST.in
+README.rst
+setup.cfg
+setup.py
+django_commento_sso/__init__.py
+django_commento_sso/conf.py
+django_commento_sso/urls.py
+django_commento_sso/utils.py
+django_commento_sso/views.py
+django_commento_sso/wsgi.py
+django_commento_sso.egg-info/PKG-INFO
+django_commento_sso.egg-info/SOURCES.txt
+django_commento_sso.egg-info/dependency_links.txt
+django_commento_sso.egg-info/top_level.txt
