@@ -45,8 +45,7 @@ def sso(request) :
 		logger.debug("HMAC comparison of token - match")
 
 		if not request.user.is_authenticated:
-			return redirect('%s?next=%s%s?hmac=%s&token=%s' % (settings.LOGIN_URL, request.get_host(), request.get_full_path(),request.GET['hmac'],request.GET['token']))
-
+            return redirect('%s?next=https://%s?hmac=%s&token=%s' % (settings.LOGIN_URL, request.get_full_path(),request.GET['hmac'],request.GET['token']))
 		else:
 			logger.info("django_commento_sso SSO Success for User %s" % request.user.username )
 			payload = {
@@ -58,15 +57,7 @@ def sso(request) :
 			else:
 				payload['email']=request.user.email
 
-			# try:
-    		# 	uid = request.session['mid']
-    		# 	userobj = User.objects.get(id=uid)
-			# except User.DoesNotExist as e:
-  			# 	logger.error('Error, user does not exist', e)
-			# 	return false
-			# #
-			# thisUser = User.objects.get(username=request.user.username).first()
-			# #avoid simplelazyobject
+
 			payload['name']=settings.COMMENTO_USER_NAME_FUNCTION(get_user(request))
 
 			if settings.COMMENTO_USER_LINK_FUNCTION:
