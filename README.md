@@ -10,11 +10,23 @@ You will need a commento account if you are using the single signon
 2. Commento.io account
 
 # Installation
-edit your requirements.txt text with the following and issue
-    pip3 install -r requirements.txt
-git+https://github.com/patrickscottbest/django-commento-sso@master
 
-#OPTIONS
+You have two options to install.  Edit your requirements.txt text with either of the following methods
+
+## PyPi direct
+
+    django-commento-sso
+
+## PyPi via Github
+
+    git+https://github.com/patrickscottbest/django-commento-sso@master
+
+If you're feeling brave, I keep a development branch: 
+
+    git+https://github.com/patrickscottbest/django-commento-sso@development
+
+
+# OPTIONS
 The following options are settable in your settings.py
 
 ## Mandatory
@@ -28,22 +40,13 @@ Only a default user_name function is provided at this time.
 
      COMMENTO_USER_NAME_FUNCTION =
 
-These functions will return other information to commento.io.  They are considered "optional".  Again, you can pass any function that returns a text string based on a provided django.contrib.auth.User object.
+These functions will return other information to commento.io.  They are considered "optional".  Again, you can pass any function that returns a text string (which will be a URL pointing to a profile or photo) based on a provided django.contrib.auth.User object.
 
-      USER_LINK_FUNCTION =
-      USER_PHOTO_FUNCTION =
-
-#TODO
-
-Perhaps users who self-host would like the option to select their own host.  Not my priority.
-
-I have authored this github to be a standalone app, but have not yet deployed on PyPi.  
-
-#HELP ME!
-Fix it and issue a pull request.  Thanks!
+     COMMENTO_USER_LINK_FUNCTION =
+     COMMENTO_USER_PHOTO_FUNCTION =
 
 
-#SECURITY CONSIDERATIONS
+# SECURITY CONSIDERATIONS
 
 Aside from the commento.io security considerations, you may wish to adhere to the following django security considerations:
 
@@ -64,3 +67,12 @@ You're using a timing safe comparison algorithm to compare the hashes and not a 
 You're authenticating your users properly before sending Commento a response payload. This includes email verification, two-factor authentication, access control lists, and so on.
 
 You're redirecting to the HTTPS version of Commento at the end. Personal data is transmitted in this stage and using plain HTTP is grossly insecure.
+
+# TODO
+
+Perhaps users who self-host would like the option to select their own host.  Not my priority.
+
+I have authored this github to be a standalone app, but have not yet deployed on PyPi.  
+
+# HELP ME!
+Fix it and issue a pull request.  Thanks!
