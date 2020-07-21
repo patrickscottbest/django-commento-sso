@@ -46,7 +46,7 @@ def sso(request) :
 
 		if not request.user.is_authenticated:
 			#return redirect('%s?next=%s%s?hmac=%s&token=%s' % (settings.LOGIN_URL, request.get_host(), request.get_full_path(),request.GET['hmac'],request.GET['token']))
-            		return redirect("{0}?next={1}{2}?hmac={3}&token={4}".format(settings.LOGIN_URL, request.get_host(), request.get_full_path(),request.GET['hmac'],request.GET['token']))
+            return redirect("{0}?next={1}{2}?hmac={3}&token={4}".format(settings.LOGIN_URL, request.get_host(), request.get_full_path(),request.GET['hmac'],request.GET['token']))
 		else:
 			logger.info("django_commento_sso SSO Success for User %s" % request.user.username )
 			payload = {
